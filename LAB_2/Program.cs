@@ -3,8 +3,6 @@
 namespace LAB_2;
 class Program
 {
-
-    
     static void Main(string[] args)
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
@@ -14,28 +12,25 @@ class Program
         NumberProgression p4 = new NumberProgression();
         p4.FirstMember = 5;
         NumberProgression p5 = p1 + p4;
-
-
-        Console.WriteLine(p1.getSumOfN(5));
-
-        Console.WriteLine(p1.getSumOfAll());
-        Console.WriteLine(p1.getProgression());
-        Console.WriteLine(p3.ToString());
+        Console.WriteLine("Прогресія № 1 = "+p1.ToString());
+        Console.WriteLine("Сума її 5 членів = "+p1.getSumOfN(5));
+        Console.WriteLine("Сума всіх елементів = "+p1.getSumOfAll());
         Console.WriteLine(p2 > p1);
-
+        
         List<NumberProgression> set = new List<NumberProgression>() { p1, p2, p3, p4, p5 };
-
-
+       
         for (int i = 0; i < set.Count; i++)
         {
-            Console.WriteLine(string.Format("Progression №{0} : {1} ", i + 1, set[i].ToString()));
+            Console.WriteLine(string.Format("Прогресія № {0} : {1} ", i + 1, set[i].ToString()));
         }
+        NumberProgression.setN(5); // міняємо кількість членів прогресії через статичний метод 
+
         void Menu()
         {
             bool _continue = true;
             while (_continue)
             {
-                Console.WriteLine("Оберіть один з варіантів :");
+                Console.WriteLine("Оберіть один з варіантів,натиснувши відповідну цифру на клавіатурі :");
                 Console.WriteLine("1.Додати нову прогресію.");
                 Console.WriteLine("2.Надрукувати всі прогресії.");
                 Console.WriteLine("3.Знайти найбільшу прогресію(за сумою чисел)");
@@ -46,7 +41,7 @@ class Program
                 switch (menu)
                 {
                     case "1":
-                        Console.WriteLine("Щоб додати нову прогресію введіть перший член та інкремент через пробіл");
+                        Console.WriteLine("Щоб додати нову прогресію введіть перший член та інкремент(поки що = 1) через пробіл");
 
                         string[] progression = Console.ReadLine().Split(" ");
                         NumberProgression newProgression = new NumberProgression(double.Parse(progression[0]), double.Parse(progression[1]));
@@ -56,7 +51,7 @@ class Program
                     case "2":
                         for (int i = 0; i < set.Count; i++)
                         {
-                            Console.WriteLine(string.Format("Progression №{0} : {1} ", i + 1, set[i].ToString()));
+                            Console.WriteLine(string.Format("Прогресія №{0} : {1} ", i + 1, set[i].ToString()));
                         }
                         break;
                     case "3":
@@ -81,10 +76,6 @@ class Program
                        
                 }
             }
-
-
-
-
         }
         Menu();
     }

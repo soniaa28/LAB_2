@@ -16,14 +16,11 @@ namespace LAB_2
         {
             m1=1 ;
             increment = 1;
-            
-          
         }
         public NumberProgression(double _m1 , double i = 1)
         {
             m1 = _m1;
-            increment = i; 
-           
+            increment = i;  
         }
 
         //property 
@@ -41,7 +38,7 @@ namespace LAB_2
 
         public static void setN(int value)
         {
-            n = value;
+           n = value;
         }
         public override string ToString()
 
@@ -49,12 +46,12 @@ namespace LAB_2
             string progression = "";
             for (int i = 0; i < n; i++)
             {
-                progression += string.Format("{0} ", this.getN(i));
+                progression += string.Format("{0} ",getN(i));
             }
             return progression;
         }
 
-        public double getN(int _n )
+        public double getN(int _n ) //взяти значення n-тового члена
         {
            if (_n == 0) { return m1; }
            else
@@ -63,12 +60,12 @@ namespace LAB_2
             }
         }
 
-        public double getSumOfN(int _n )
+        public double getSumOfN(int _n)//взяти суму чисел до n-тового члена
         {
             double sum = 0;
             for (int i = 0; i < _n; i++)
             {
-                sum += this.getN(i);
+                sum += getN(i);
             }
             return sum;
         }
@@ -81,15 +78,7 @@ namespace LAB_2
             }
             return sum;
         }
-        public string getProgression()
-        {
-            string progression = "";
-            for (int i = 0; i < n; i++)
-            {
-                progression += string.Format("{0} ", this.getN(i));
-            }
-            return progression;
-        }
+   
         public static bool operator <(NumberProgression left, NumberProgression right)
         {
             return left.getSumOfAll() < right.getSumOfAll();
@@ -103,7 +92,7 @@ namespace LAB_2
         public static NumberProgression operator +(NumberProgression left, NumberProgression right)
         {
             double newFirstMember = left.m1 + right.m1;
-            double newIncrement = 1;//напркилад згодом для арифметичної можна зробити так : left.increment + right.increment , а для геометричної множити 
+            double newIncrement = 1;//наприклад згодом для арифметичної можна зробити так : left.increment + right.increment , а для геометричної множити 
             return new NumberProgression(newFirstMember, newIncrement);
         }
     }
